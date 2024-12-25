@@ -63,19 +63,18 @@ https://www.omdbapi.com/?s=Inception&apikey=YOUR_API_KEY
    - Release Year
 3. **Modal View:** Show additional movie details (e.g., genre, director, plot) when a movie card is clicked.
 4. **State Management:** Use React Context API or Redux to manage state for search results and selected movie details.
+5. **Sorting:** Allow users to sort movies by release year (ascending/descending).
+6. **Filtering:** Provide a filter to show movies by decade (e.g., 1980s, 1990s).
+7. **Infinite Scrolling or Pagination:** Improve UX by handling large result sets efficiently.
 
 ### Bonus Features (Optional)
-- **Sorting:** Allow users to sort movies by release year (ascending/descending).
-- **Filtering:** Provide a filter to show movies by decade (e.g., 1980s, 1990s).
 - **Caching:** Implement client-side caching for previously searched titles.
-- **Infinite Scrolling or Pagination:** Improve UX by handling large result sets efficiently.
-- **Unit Tests:** Add basic unit tests for components or utility functions.
 
 ---
 
 ## 📝 Submission Instructions
 
-1. **Repository Structure:** Your project should follow this basic structure:
+1. **Repository Structure:** Your project may ( not mandatory ) follow this basic structure:
    ```plaintext
    movie-finder/
    ├── src/
@@ -102,9 +101,6 @@ https://www.omdbapi.com/?s=Inception&apikey=YOUR_API_KEY
      - The features implemented and any decisions made.
      - Any additional libraries or tools used.
    - A `.env.example` file (no API keys included).
-
-4. **Deployment (Optional):** Host your project on a free service like Netlify or Vercel and include the live link in your submission.
-
 ---
 
 ## 📚 Resources
