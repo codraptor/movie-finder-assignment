@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const ModalOverlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,83 +15,72 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: #141414;
-  color: white;
+  background-color: #fff;
+  color: black;
   padding: 20px;
   border-radius: 8px;
+  position: relative;
   width: 80%;
-  max-width: 500px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+`;
 
-  h2 {
-    margin: 0 0 10px;
-  }
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-  p {
-    margin: 5px 0;
-  }
-
-  button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  button:hover {
+  &:hover {
     background-color: darkred;
   }
 `;
 
-const Loading = styled.div`
-  color: white;
-  font-size: 1.5rem;
-  text-align: center;
+const MovieInfo = styled.div`
+  margin-top: 20px;
 `;
 
-const MovieModal = ({ movieId, onClose }) => {
-  const [movieDetails, setMovieDetails] = useState(null);
-  const [loading, setLoading] = useState(true);
+const MovieInfoItem = styled.p`
+  font-size: 1rem;
+  margin: 5px 0;
 
-  useEffect(() => {
-    const fetchMovieDetails = async () => {
-      setLoading(true); // Start loading
-      try {
-        const apiKey = process.env.REACT_APP_OMDB_API_KEY;
-        const response = await fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=${apiKey}`);
-        const data = await response.json();
-        setMovieDetails(data);
-      } catch (error) {
-        console.error("Error fetching movie details:", error);
-      } finally {
-        setLoading(false); // End loading
-      }
-    };
-    fetchMovieDetails();
-  }, [movieId]);
-
-  if (loading) {
-    return (
-      <ModalOverlay>
-        <Loading>Loading...</Loading>
-      </ModalOverlay>
-    );
+  strong {
+    font-weight: bold;
   }
+`;
 
-  if (!movieDetails) return null;
+const MovieModal = ({ movie, onClose }) => {
+  if (!movie) return null;
 
   return (
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose}>Close</button>
-        <h2>{movieDetails.Title}</h2>
-        <p><strong>Year:</strong> {movieDetails.Year}</p>
-        <p><strong>Genre:</strong> {movieDetails.Genre}</p>
-        <p><strong>Director:</strong> {movieDetails.Director}</p>
-        <p><strong>Plot:</strong> {movieDetails.Plot}</p>
+        <CloseButton onClick={onClose}>X</CloseButton>
+        <h2>{movie.Title}</h2>
+        <MovieInfo>
+          <MovieInfoItem>
+            <strong>Genre:</strong> {movie.Genre}
+          </MovieInfoItem>
+          <MovieInfoItem>
+            <strong>Director:</strong> {movie.Director}
+          </MovieInfoItem>
+          <MovieInfoItem>
+            <strong>Plot:</strong> {movie.Plot}
+          </MovieInfoItem>
+          <MovieInfoItem>
+            <strong>Year:</strong> {movie.Year}
+          </MovieInfoItem>
+        </MovieInfo>
       </ModalContent>
     </ModalOverlay>
   );

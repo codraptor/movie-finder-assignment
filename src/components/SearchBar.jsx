@@ -8,12 +8,12 @@ const SearchBarContainer = styled.div`
 `;
 
 const Input = styled.input`
-  padding: 10px;
+  padding: 20px;
   font-size: 1rem;
   border: none;
   border-radius: 4px 0 0 4px;
   outline: none;
-  width: 300px;
+  width: 450px;
 `;
 
 const Button = styled.button`
