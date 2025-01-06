@@ -1,112 +1,59 @@
-# Movie Finder Challenge
+# Movie Finder App
 
-Welcome to the **Movie Finder Challenge**! This exercise is designed to test your skills in React development, API integration, state management, and UI design. Follow the instructions below to get started.
+This is a React-based Movie Finder application that allows users to search, filter, and view detailed information about movies. The app fetches movie data from the OMDb API and displays it in a grid format. Users can click on any movie card to view additional details in a modal overlay.
 
----
+## Features
 
-## 🚀 Challenge Overview
+- **Search Movies**: Search movies by title using the search bar.
+- **Filter by Decade**: Filter movies by decade (1980s, 1990s, 2000s, 2010s, 2020s).
+- **Sort by Year**: Sort movies in ascending or descending order by release year.
+- **Modal Overlay**: View additional details about a movie (Genre, Director, Plot, Year) in a modal when clicking on a movie card.
+- **Load More Movies**: Click "Load More" to fetch more movies from the OMDb API.
+- **Responsive Design**: The app is designed to be responsive and should work well on both desktop and mobile devices.
 
-Your task is to build a **Movie Finder Application** that allows users to search for movies using the [OMDb API](http://www.omdbapi.com/). You are expected to:
+## Setup and Running the Project
 
-- Integrate the OMDb API to fetch and display movie data.
-- Build a responsive and visually appealing UI.
-- Implement state management effectively using React Context or Redux.
-- Optimize the app with sorting, filtering, and caching.
+Follow these steps to set up and run the project locally:
 
----
+### 1. Clone the repository:
 
-## 🔑 API Instructions
+git clone https://github.com/shruti27jauhari/movie-finder-assignment.git
 
-### API Endpoint
-The OMDb API base URL is:
-```
-https://www.omdbapi.com/
-```
+2. Navigate to the project directory:
 
-### Getting an API Key
-1. Visit [OMDb API](http://www.omdbapi.com/apikey.aspx).
-2. Sign up to get your free API key.
-3. Use your API key for all requests.
+cd movie-finder-assignment
 
-### Example Request
-To search for movies by title:
-```
-https://www.omdbapi.com/?s=Inception&apikey=YOUR_API_KEY
-```
+3. Install the dependencies:
+   Ensure that you have Node.js installed on your system. Then, run the following command to install all required packages:
 
-### Example Response
-```json
-{
-  "Search": [
-    {
-      "Title": "Inception",
-      "Year": "2010",
-      "imdbID": "tt1375666",
-      "Type": "movie",
-      "Poster": "https://example.com/poster.jpg"
-    }
-  ],
-  "totalResults": "1",
-  "Response": "True"
-}
-```
+npm install
 
----
+4. Set up OMDb API Key:
 
-## 🎯 Requirements
+Create a .env file in the root directory of the project and add your OMDb API key like this:
 
-### Core Requirements
-1. **Search Functionality:** Allow users to search for movies by title.
-2. **Movie Grid:** Display search results as a grid of movie cards showing:
-   - Title
-   - Poster
-   - Release Year
-3. **Modal View:** Show additional movie details (e.g., genre, director, plot) when a movie card is clicked.
-4. **State Management:** Use React Context API or Redux to manage state for search results and selected movie details.
-5. **Sorting:** Allow users to sort movies by release year (ascending/descending).
-6. **Filtering:** Provide a filter to show movies by decade (e.g., 1980s, 1990s).
-7. **Infinite Scrolling or Pagination:** Improve UX by handling large result sets efficiently.
+REACT_APP_OMDB_API_KEY=your-api-key
 
-### Bonus Features (Optional)
-- **Caching:** Implement client-side caching for previously searched titles.
+You can obtain an API key by signing up at OMDb API.
 
----
+5. Start the application:
+   Run the following command to start the development server:
 
-## 📝 Submission Instructions
+npm start
+This will start the app on http://localhost:3000.
 
-1. **Repository Structure:** Your project may ( not mandatory ) follow this basic structure:
-   ```plaintext
-   movie-finder/
-   ├── src/
-   │   ├── components/
-   │   ├── styles/
-   │   ├── App.js
-   │   ├── index.js
-   ├── public/
-   │   ├── index.html
-   ├── README.md
-   ├── package.json
-   ├── .env
-   └── .gitignore
-   ```
+Libraries and Tools Used
+React: The core framework used to build the app.
+Styled-components: For styling the components using tagged template literals.
+OMDb API: For fetching movie data based on the search query.
+React Hooks: For managing state and lifecycle events in functional components.
+keyframes: For adding simple animations (like spinning for the loading indicator).
+React Router (optional, if applicable in other use cases).
+Decisions Made
+Modal Implementation: The modal overlay is triggered when a user clicks on a movie card, displaying detailed information such as Genre, Director, Plot, and Year. This was chosen to keep the user interface clean and minimal.
 
-2. **Code Submission:**
-   - Fork this repository.
-   - Push your changes to your fork.
-   - Create a pull request to the original repository.
+Styled-components: I used styled-components to handle component-level styling in JavaScript. This allowed for easy styling management and encapsulation, making it easier to modify components without worrying about conflicts with global styles.
 
-3. **Include the Following:**
-   - A `README.md` file explaining:
-     - How to set up and run the project.
-     - The features implemented and any decisions made.
-     - Any additional libraries or tools used.
-   - A `.env.example` file (no API keys included).
----
+Decade and Sorting Filters: The application includes a filter to view movies by decade and an option to sort movies by their release year. This helps users quickly browse movies from specific time periods.
 
-## 📚 Resources
-
-- [React Documentation](https://reactjs.org/docs/getting-started.html)
-- [OMDb API Documentation](https://www.omdbapi.com/)
-- [JavaScript Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-
-Good luck, and happy coding! 🚀
+Load More Feature: Instead of fetching all movie data at once, the app allows users to click the "Load More" button to fetch additional movies. This ensures that the app stays responsive and reduces the load time on initial page load.
