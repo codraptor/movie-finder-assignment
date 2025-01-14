@@ -3,13 +3,15 @@ import { IoSearch } from "react-icons/io5"; // Search icon
 import { IoMdClose } from "react-icons/io"; // Close icon
 import { BiCameraMovie } from "react-icons/bi"; 
 
-const SearchBar = ({ fetchMovies }) => {
+const SearchBar = ({ fetchMovies,fetchRandomMovies }) => {
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
 
   const handleSearch = () => {
     if (query.trim()) {
       fetchMovies(query); // Perform search when query is valid
+    } else {
+      fetchRandomMovies(); // Fetch random movies if no query is entered
     }
   };
 
@@ -63,6 +65,7 @@ const SearchBar = ({ fetchMovies }) => {
             )}
             {/* Search Icon (always shown) */}
             <div
+            
               onClick={handleSearch}
               className="w-14 text-[#243642] bg-[#D3F1DF] p-1 rounded-full cursor-pointer hover:bg-[#243642] hover:text-[#D3F1DF] transition-all duration-300 flex items-center justify-center">
               <IoSearch className="text-2xl" />

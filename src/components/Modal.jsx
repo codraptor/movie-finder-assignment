@@ -43,16 +43,21 @@ const Modal = ({ isOpen, onClose, movie }) => {
         {loading ? (
           <p>Loading details...</p>
         ) : movieDetails ? (
-          <div>
+          <div className=''>
             <h2 className="text-2xl oldenburg-regular mb-4">{movieDetails.Title}</h2>
+            <div className='flex'>
             <img
               src={movieDetails.Poster !== 'N/A' ? movieDetails.Poster : 'https://via.placeholder.com/300'}
               alt={movieDetails.Title}
               className="h-64 justify-center align-middle items-center object-cover mb-4 rounded"
             />
+            <div className='pl-8 inline'>
             <p className='tinos-regular'><strong className=' tinos-bold'>Genre:</strong> {movieDetails.Genre || 'N/A'}</p>
             <p className='tinos-regular'><strong className=' tinos-bold'>Director:</strong> {movieDetails.Director || 'N/A'}</p>
             <p className='tinos-regular'><strong className=' tinos-bold'>Plot:</strong> {movieDetails.Plot || 'N/A'}</p>
+            </div>
+            
+            </div>
           </div>
         ) : (
           <p>Unable to fetch movie details.</p>

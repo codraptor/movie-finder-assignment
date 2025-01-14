@@ -23,7 +23,31 @@ const App = () => {
       const data = response.data;
 
       if (data.Response === 'True') {
-        setMovies((prevMovies) => (page === 1 ? data.Search : [...prevMovies, ...data.Search])); // Reset or append movies
+        setMovies(data.Search); // Reset movies with fresh data
+        setNoResults(false); // Reset no results state
+        setStatus('succeeded');
+      } else {
+        setMovies([]);
+        setNoResults(true); // Set no results state to true
+        setStatus('no-results');
+      }
+    } catch (error) {
+      setMovies([]);
+      setNoResults(true);
+      setStatus('failed');
+      console.error(error);
+    }
+  };
+
+  const fetchRandomMovies = async (page = 1) => {
+    setStatus('loading');
+    const randomQuery = popularQueries[Math.floor(Math.random() * popularQueries.length)];
+    try {
+      const response = await axios.get(`https://www.omdbapi.com/?s=${randomQuery}&page=${page}&apikey=ab7585e4`);
+      const data = response.data;
+
+      if (data.Response === 'True') {
+        setMovies(data.Search); // Reset movies with random query data
         setNoResults(false); // Reset no results state
         setStatus('succeeded');
       } else {
@@ -102,10 +126,13 @@ const App = () => {
 
   useEffect(() => {
     if (movies.length === 0 && query === '') {
-      const randomQuery = popularQueries[Math.floor(Math.random() * popularQueries.length)];
-      fetchMovies(randomQuery, 1);
+      fetchRandomMovies(1); // Fetch random movies when there is no query
     }
   }, [movies, query]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
 
   return (
     <div className="min-h-screen bg-[#243642] text-[#D3F1DF]" onScroll={handleScroll}>
