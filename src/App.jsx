@@ -4,6 +4,7 @@ import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'; // Import arrow icon
 import HomePage from './components/HomePage';
 import MovieGrid from './components/MovieGrid';
 import SortFilter from './components/SortFilter'; // Import SortFilter component
+import SearchBar from './components/SearchBar'; // Import SearchBar component
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -137,6 +138,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-[#243642] text-[#D3F1DF]" onScroll={handleScroll}>
       <HomePage fetchMovies={handleSearch} />
+      <SearchBar fetchMovies={handleSearch} fetchRandomMovies={fetchRandomMovies} /> 
       <SortFilter onSortChange={handleSortChange} onFilterChange={handleFilterChange} />
       <div className="container mx-auto px-4 py-6">
         {noResults ? (
@@ -169,3 +171,4 @@ const App = () => {
 };
 
 export default App;
+
