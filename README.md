@@ -1,112 +1,31 @@
-# Movie Finder Challenge
+# Movie Finder App
 
-Welcome to the **Movie Finder Challenge**! This exercise is designed to test your skills in React development, API integration, state management, and UI design. Follow the instructions below to get started.
+Features:
 
----
+    1.Search: Dynamic movie search with debounce to limit API calls.
+    2.Details Modal: Shows movie info (genre, director, plot) in a responsive layout.
+    3.Sort & Filter: Sort by release year and filter by decades.
+    4.Pagination: Load more movies via buttons or infinite scrolling.
 
-## 🚀 Challenge Overview
+Clone the Repository:
 
-Your task is to build a **Movie Finder Application** that allows users to search for movies using the [OMDb API](http://www.omdbapi.com/). You are expected to:
+    git clone https://github.com/Sakshi-016/movie-finder.git
 
-- Integrate the OMDb API to fetch and display movie data.
-- Build a responsive and visually appealing UI.
-- Implement state management effectively using React Context or Redux.
-- Optimize the app with sorting, filtering, and caching.
+Install dependencies:
 
----
+    npm install
 
-## 🔑 API Instructions
+Set up .env file :
 
-### API Endpoint
-The OMDb API base URL is:
-```
-https://www.omdbapi.com/
-```
+    REACT_APP_OMDB_API_KEY=your_key
 
-### Getting an API Key
-1. Visit [OMDb API](http://www.omdbapi.com/apikey.aspx).
-2. Sign up to get your free API key.
-3. Use your API key for all requests.
+TO run File :
 
-### Example Request
-To search for movies by title:
-```
-https://www.omdbapi.com/?s=Inception&apikey=YOUR_API_KEY
-```
+    npm run dev 
 
-### Example Response
-```json
-{
-  "Search": [
-    {
-      "Title": "Inception",
-      "Year": "2010",
-      "imdbID": "tt1375666",
-      "Type": "movie",
-      "Poster": "https://example.com/poster.jpg"
-    }
-  ],
-  "totalResults": "1",
-  "Response": "True"
-}
-```
+Additional Libraries Used:
+   
+    1.Axios: For making HTTP requests to the OMDB API.
+    2.React Icons: Provides icons for the search bar, modals, and pagination.
+    3.Tailwind CSS: Used for styling the application.
 
----
-
-## 🎯 Requirements
-
-### Core Requirements
-1. **Search Functionality:** Allow users to search for movies by title.
-2. **Movie Grid:** Display search results as a grid of movie cards showing:
-   - Title
-   - Poster
-   - Release Year
-3. **Modal View:** Show additional movie details (e.g., genre, director, plot) when a movie card is clicked.
-4. **State Management:** Use React Context API or Redux to manage state for search results and selected movie details.
-5. **Sorting:** Allow users to sort movies by release year (ascending/descending).
-6. **Filtering:** Provide a filter to show movies by decade (e.g., 1980s, 1990s).
-7. **Infinite Scrolling or Pagination:** Improve UX by handling large result sets efficiently.
-
-### Bonus Features (Optional)
-- **Caching:** Implement client-side caching for previously searched titles.
-
----
-
-## 📝 Submission Instructions
-
-1. **Repository Structure:** Your project may ( not mandatory ) follow this basic structure:
-   ```plaintext
-   movie-finder/
-   ├── src/
-   │   ├── components/
-   │   ├── styles/
-   │   ├── App.js
-   │   ├── index.js
-   ├── public/
-   │   ├── index.html
-   ├── README.md
-   ├── package.json
-   ├── .env
-   └── .gitignore
-   ```
-
-2. **Code Submission:**
-   - Fork this repository.
-   - Push your changes to your fork.
-   - Create a pull request to the original repository.
-
-3. **Include the Following:**
-   - A `README.md` file explaining:
-     - How to set up and run the project.
-     - The features implemented and any decisions made.
-     - Any additional libraries or tools used.
-   - A `.env.example` file (no API keys included).
----
-
-## 📚 Resources
-
-- [React Documentation](https://reactjs.org/docs/getting-started.html)
-- [OMDb API Documentation](https://www.omdbapi.com/)
-- [JavaScript Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-
-Good luck, and happy coding! 🚀
